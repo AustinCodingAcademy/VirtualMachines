@@ -11,33 +11,31 @@ In order to install the ACA virtual machine, run the following commands in succe
  
 ``` bash
 cd ~/Desktop
-```
- 
- ``` bash
 mkdir htdocs
- ```
- 
- ``` bash
 sudo ln -s ~/Desktop/htdocs /htdocs
- ```
- 
- ``` bash
 mkdir -p ~/Desktop/htdocs/ACAShop #VM NFS synced folder
- ```
- 
- ``` bash
 git clone git@github.com:AustinCodingAcademy/VirtualMachines.git
-```
- 
- ``` bash
 cd VirtualMachines
-```
-
-``` bash
 ./install-aca-vm.sh
 ```
 
 Ensure that the following entry is in your ```/etc/hosts``` file
 ```bash
 10.10.10.60     aca.vm
+```
+
+#### Usage
+
+SSH into virtual machine
+```bash
+cd ~/Desktop/VirtualMachines/vms/aca.vm
+vagrant ssh
+```
+
+MySQL credentials
+```bash
+username=root
+password=root
+host=aca.vm
+port=3306
 ```
