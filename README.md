@@ -11,10 +11,10 @@ In order to install the ACA virtual machine, run the following commands in succe
  
 ``` bash
 cd ~/Desktop
+```
  
  ``` bash
 mkdir htdocs
- 
  ```
  
  ``` bash
