@@ -7,9 +7,14 @@ You are required to install the following software on your computer prior to run
 - [Vagrant](https://www.vagrantup.com/) - Provision a virtual machine
 - [Ansible](http://docs.ansible.com/intro_installation.html) - Configure the VM
 
-In order to install the ACA virtual machine, run the following commands:
-
-- ```cd ~/Desktop```
-- ```git clone git@github.com:AustinCodingAcademy/VirtualMachines.git```
-- ```cd VirtualMachines```
-- ```./install-aca-vm.sh```
+In order to install the ACA virtual machine, run the following command
+ 
+``` bash
+cd ~/Desktop; 
+mkdir htdocs; 
+sudo ln -s ~/Desktop/htdocs /htdocs; 
+mkdir -p ~/Desktop/htdocs/ACAShop;
+git clone git@github.com:AustinCodingAcademy/VirtualMachines.git; 
+cd VirtualMachines;
+./install-aca-vm.sh   
+```
