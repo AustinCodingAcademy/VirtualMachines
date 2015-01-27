@@ -14,7 +14,9 @@ cd ~/Desktop;
 mkdir htdocs; 
 sudo ln -s ~/Desktop/htdocs /htdocs; 
 mkdir -p ~/Desktop/htdocs/ACAShop;
-git clone git@github.com:AustinCodingAcademy/VirtualMachines.git; 
+git clone git@github.com:AustinCodingAcademy/VirtualMachines.git;
+sudo echo "10.10.10.60     aca.vm" > /etc/hosts; 
+sudo echo "10.10.10.60     acashop.local" > /etc/hosts; 
 cd VirtualMachines;
-./install-aca-vm.sh   
+./install-aca-vm.sh;
 ```
