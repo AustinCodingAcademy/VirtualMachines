@@ -1,0 +1,91 @@
+---
+- hosts: aca-vm
+  vars:
+    apache_default_config: "/etc/apache2/sites-enabled/000-default.conf"
+    mysql_user: "root"
+    mysql_pass: "root"
+    mysql_db: "acashop"
+  sudo: yes
+  tasks:
+    - name: Update apt packages
+      apt: update_cache=yes
+
+    - name: Install Packages
+      action: apt pkg="{{item}}" state=present
+      with_items:
+        - vim
+        - htop
+        - apache2
+        - php5
+        - libapache2-mod-php5
+        - php5-mcrypt
+        - php5-cli
+        - php5-mysql
+        - php5-gd
+        - mysql-server
+        - mysql-client
+        - mongodb-server
+        - mongodb-clients
+        - python-dev
+        - libmysqlclient-dev
+        - python-pip
+        - php5-curl
+        - git
+
+    - name: MySQL python package via pip
+      shell: pip install MySQL-python
+
+    - name: Stat default apache config
+      stat: path={{ apache_default_config }}
+      register: apache_config_stat
+
+    - name: Remove default apache config if it exists
+      command: unlink {{ apache_default_config }}
+      when: apache_config_stat.stat.exists
+
+    - name: Configure services
+      copy: src={{ item.src }} dest={{ item.dest }}
+      with_items:
+        - { src: '../etc/aca.vm/apache2/sites-available/aca.vm.conf', dest: '/etc/apache2/sites-enabled/aca.vm.conf' }
+        - { src: '../etc/aca.vm/apache2/envvars', dest: '/etc/apache2/envvars' }
+        - { src: '../etc/aca.vm/php.ini', dest: '/etc/php5/apache2/php.ini' }
+        - { src: '../etc/aca.vm/mysql/my.cnf', dest: '/etc/mysql/my.cnf' }
+        - { src: '../data/aca.vm/seed.sql', dest: '/home/vagrant/seed.sql' }
+
+    - name: Enable rewrite module
+      apache2_module: state=present name=rewrite
+
+    - name: Update message of the day
+      copy: src='../etc/aca.vm/motd' dest='/etc/motd' owner=root group=root mode=0644
+
+    - name: Copy bash profile
+      copy: src='../home/aca.vm/.bash_profile' dest='/home/vagrant/.bash_profile' owner=vagrant group=vagrant mode=0655
+
+    - name: Clean cache and logs
+      shell: rm -rf /dev/shm/cache /dev/shm/logs
+
+    - name: Ensure asset directories
+      file: path={{ item.dir }} owner=root group=vagrant mode=0776 state=directory
+      with_items:
+        - { dir: '/dev/shm/logs' }
+        - { dir: '/dev/shm/cache' }
+
+    - name: Restart apache & MySQL
+      service: name={{ item.service }} state={{ item.state }} enabled=true
+      with_items:
+        - { service : 'mysql', state: 'restarted' }
+        - { service : 'apache2', state: 'restarted' }
+
+    - name: Update MySQL root password for root account
+      mysql_user: name={{ mysql_user }} password={{ mysql_pass }} priv=*.*:ALL,GRANT
+
+    - name: Create a database
+      mysql_db: name=acashop
+                collation=utf8_general_ci
+                encoding=utf8
+                state=present
+                login_user={{ mysql_user }}
+                login_password={{ mysql_pass }}
+
+    - name: Seed DB if necessary
+      shell: mysql -{{ mysql_user }} -p{{ mysql_pass }} {{ mysql_db }} < /home/vagrant/seed.sql

@@ -1,0 +1,28 @@
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.hostname = "aca.vm"	
+  config.vm.box = "https://s3-us-west-2.amazonaws.com/vagrantvmboxes/ubuntu-14.04-amd64.box"
+  config.vm.network "private_network", ip: "10.10.10.60"
+  config.vm.synced_folder "/htdocs/ACAShop", "/var/www/ACAShop"
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.gui = false
+    vb.customize ["modifyvm", :id, "--memory", "2056"]
+    vb.customize ["modifyvm", :id, "--cpus", "2"]
+  end
+	
+  # Configure the window for gatling to coalesce writes.
+  if Vagrant.has_plugin?("vagrant-gatling-rsync")
+    config.gatling.latency = 2.5
+    config.gatling.time_format = "%H:%M:%S"
+  end		
+	
+  config.vm.provision "ansible" do |ansible|
+    ansible.limit = 'all'
+    ansible.inventory_path = '../../etc/hosts'
+    ansible.playbook = "../../playbooks/provision-aca-vm.yml"
+#    ansible.verbose = 'vvvv'
+    ansible.extra_vars = {ansible_ssh_user: 'vagrant'}
+  end
+end
