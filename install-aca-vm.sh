@@ -6,7 +6,7 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 # Provision machine
 cd "$DIR"
 :
-cd ../vms/aca.vm
+cd vms/aca.vm
 :
 
 # Bring up the VM, provisioning will happen here as well
