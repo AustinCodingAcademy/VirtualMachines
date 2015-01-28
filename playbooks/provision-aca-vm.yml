@@ -76,9 +76,6 @@
         - { service : 'mysql', state: 'restarted' }
         - { service : 'apache2', state: 'restarted' }
 
-    - name: Update MySQL root password for root account
-      mysql_user: name={{ mysql_user }} password={{ mysql_pass }} priv=*.*:ALL,GRANT
-
     - name: Create a database
       mysql_db: name=acashop
                 collation=utf8_general_ci
