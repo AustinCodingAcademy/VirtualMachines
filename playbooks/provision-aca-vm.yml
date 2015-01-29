@@ -86,3 +86,7 @@
 
     - name: Seed DB if necessary
       shell: mysql -{{ mysql_user }} -p{{ mysql_pass }} {{ mysql_db }} < /home/vagrant/seed.sql
+
+    - name: Update composer
+      sudo: yes
+      shell: /usr/local/bin/composer self-update
