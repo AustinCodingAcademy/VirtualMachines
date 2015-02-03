@@ -61,7 +61,8 @@ Once everything is complete, visit [http://10.10.10.60](http://10.10.10.60) in y
 
 
 #### Expected Result
-You should see the following output in your terminal
+You should see the following output in your terminal (colors may vary)
+![Terminal](images/aca-terminal.png "Terminal Output")
 
-
-You should see the following page in your browser.
+You should see the following page in your browser
+![Browser](images/aca-phpinfo.png "Browser phpinfo() Output")
