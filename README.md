@@ -57,4 +57,11 @@ cd vm
 vagrant up
 ```
 
-Once everything is complete, visit [http://10.10.10.60](http://10.10.10.60) in your browser, you should see the following page.
+Once everything is complete, visit [http://10.10.10.60](http://10.10.10.60) in your browser.
+
+
+#### Expected Result
+You should see the following output in your terminal
+
+
+You should see the following page in your browser.
