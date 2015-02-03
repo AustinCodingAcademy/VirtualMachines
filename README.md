@@ -30,7 +30,7 @@ In the ```htdocs``` folder, create a file called ```index.php``` with the follow
 phpinfo();
 ```
 
-Similarly, in the htdocs folder, create a file called ```VagrantFile```. Note that this file has no extension, and case matters!
+Similarly, in the vm folder, create a file called ```VagrantFile```. Note that this file has no extension, and case matters!
 
 Copy and paste the following code in this ```VagrantFile```
 ```ruby
