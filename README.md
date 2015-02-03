@@ -61,8 +61,11 @@ Once everything is complete, visit [http://10.10.10.60](http://10.10.10.60) in y
 
 
 #### Expected Result
-You should see the following output in your terminal (colors may vary)
+You should see the following output in your mac terminal (colors may vary)
 ![Terminal](images/aca-terminal.png "Terminal Output")
 
-You should see the following page in your browser
+On windows, you should see the following output. You can issue ```vagrant ssh``` from within the ```c:\vm``` folder to SSH into the VM.
+![CommandPrompt](images/aca-windows-command-prompt.png "Command Prompt Output")
+
+On mac or windows, you should see the following page in your browser
 ![Browser](images/aca-phpinfo.png "Browser phpinfo() Output")
