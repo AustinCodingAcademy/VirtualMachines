@@ -9,7 +9,7 @@ You are required to install the following software on your computer prior to run
 #### Mac Instructions
 Open up Terminal, copy and paste this entire command, then hit enter
 ```bash
-cd ~/Desktop; cd VirtualMachines; vagrant destroy; cd ~/Desktop; rm -rf htdocs; rm -rf VirtualMachines; mkdir VirtualMachines; mkdir htdocs; echo "<?php phpinfo();" > htdocs/index.php; cd VirtualMachines; curl https://gist.githubusercontent.com/sameg14/9e31709d132e6494ec1d/raw/158664c9962a5f17edb2c02054ba7e5bbc8b80ae/VagrantFile > VagrantFile; vagrant up; vagrant ssh;
+cd ~/Desktop; cd VirtualMachines; vagrant destroy; cd ~/Desktop; rm -rf htdocs; rm -rf VirtualMachines; mkdir VirtualMachines; mkdir htdocs; echo "<?php phpinfo();" > htdocs/index.php; cd VirtualMachines; curl https://gist.githubusercontent.com/ryanfmurphy/5499647addb4379b1e38/raw/23890615f47530549d9761f865d7c51139a4cca8/gistfile1.txt > VagrantFile; vagrant up; vagrant ssh;
 ```
 
 #### Windows Instructions
