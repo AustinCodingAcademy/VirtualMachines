@@ -1,6 +1,4 @@
-#### Developer Virtual Machine
-
-You are required to install the following software on your computer prior to running any commands:
+You are required to install the following software on your computer *prior* to running any commands:
 
 - [VirtualBox](https://www.virtualbox.org/) - Create and run a virtual development environment
 - [git](http://git-scm.com/) - Version control system
