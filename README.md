@@ -60,7 +60,6 @@ vagrant up
 ### Post Installation
 Once everything is complete, visit [http://10.10.10.60](http://10.10.10.60) in your browser.
 
-#### Expected Result
 You should see the following output in your mac terminal (colors may vary)
 ![Terminal](images/aca-terminal.png "Terminal Output")
 
