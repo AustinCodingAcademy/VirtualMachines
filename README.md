@@ -57,7 +57,7 @@ cd vm
 vagrant up
 ```
 
-### Post Installation
+### Post Installation (mac and windows)
 Once everything is complete, visit [http://10.10.10.60](http://10.10.10.60) in your browser.
 
 You should see the following output in your mac terminal (colors may vary)
