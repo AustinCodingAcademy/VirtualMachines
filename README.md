@@ -1,8 +1,8 @@
 You are required to install the following software on your computer *prior* to running any commands:
 
-- [VirtualBox](https://www.virtualbox.org/) - Create and run a virtual development environment
-- [git](http://git-scm.com/) - Version control system
-- [Vagrant](https://www.vagrantup.com/) - Provision a virtual machine
+- [VirtualBox](https://www.virtualbox.org/) - Create and manage virtual environments locally
+- [git](http://git-scm.com/) - Version control
+- [Vagrant](https://www.vagrantup.com/) - Install and create virtual machines easily
 
 ### Mac Instructions
 Open up Terminal, copy and paste this entire command, then hit enter
